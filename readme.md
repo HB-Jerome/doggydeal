@@ -185,3 +185,80 @@ Bonus :
 -   Un diagramme de classe / schéma de la BdD
 -   Un plan du site (liste des pages et les liens entre elles)
 -   Un document avec les normes de nommage et de rangement de vos fichiers
+
+# Mcd
+
+```mermaid
+erDiagram
+
+    User }o--|| Departement : live
+    User||--|| Association : herite
+    User||--|| Adoptant : herite
+    Adoptant ||--o{ AdoptionOffer : create
+    Association ||--|{ Annonce : create
+    Annonce ||--|{ Dog : concerner
+    Dog }o--|{ Race : appartenir
+    Dog ||--|{ Image : have
+    
+    AdoptionOffer }o--|{ Dog : adopt 
+    AdoptionOffer }o--|| Annonce : answer   
+    Message }|--|| AdoptionOffer : link
+    Annonce {
+        string title
+        date createdAt
+        date modifiedAt
+        string description
+        Bool isDisponible
+    }
+
+    
+    Dog {
+        string name
+        string description
+        string antecedant
+        bool Lof
+        bool acceptAnnimals
+        bool isAdopted
+    }
+    Race {
+        string name
+        string description
+    }
+
+    
+     Image {
+        string path
+        string alt
+    }
+
+    
+
+    User {
+        string phone
+        string email
+        string name
+        string firstName
+        string city
+    }
+
+    Adoptant {
+    }
+
+    Association {
+    }
+    Departement {
+        string name
+        string code
+    }
+    Message {
+        date dateCreated
+        string subject
+        string content
+        BOOL isAdoptant
+    }
+    
+    AdoptionOffer {
+        date dateCreated
+        Bool isAccepted
+    }
+```
