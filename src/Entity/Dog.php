@@ -38,6 +38,7 @@ class Dog
     private Collection $races;
 
     #[ORM\ManyToOne(inversedBy: 'dogs')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?Annonce $annonce = null;
 
     #[ORM\ManyToMany(targetEntity: AdoptionOffer::class, mappedBy: 'dogs')]

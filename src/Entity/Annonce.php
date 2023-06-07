@@ -28,7 +28,7 @@ class Annonce
     #[ORM\Column]
     private ?bool $isAvailable = null;
 
-    #[ORM\OneToMany(mappedBy: 'annonce', targetEntity: Dog::class)]
+    #[ORM\OneToMany(mappedBy: 'annonce', targetEntity: Dog::class, cascade: ['persist', 'remove'])]
     private Collection $dogs;
 
     #[ORM\OneToMany(mappedBy: 'Annonce', targetEntity: AdoptionOffer::class)]
