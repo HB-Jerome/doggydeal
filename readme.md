@@ -186,7 +186,7 @@ Bonus :
 -   Un plan du site (liste des pages et les liens entre elles)
 -   Un document avec les normes de nommage et de rangement de vos fichiers
 
-# Mcd
+## Mcd
 
 ```mermaid
 erDiagram
@@ -262,3 +262,5 @@ erDiagram
         Bool isAccepted
     }
 ```
+## Plan du site
+![Plan du site](public/img/structure-site.png)
