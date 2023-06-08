@@ -31,10 +31,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     protected ?string $password = null;
 
     #[ORM\Column(length: 255)]
-    protected ?string $City = null;
+    protected ?string $city = null;
 
     #[ORM\Column(length: 16)]
-    protected ?string $Phone = null;
+    protected ?string $phone = null;
 
     #[ORM\Column(length: 255)]
     protected ?string $zipCode = null;
@@ -111,24 +111,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getCity(): ?string
     {
-        return $this->City;
+        return $this->city;
     }
 
-    public function setCity(string $City): self
+    public function setCity(string $city): self
     {
-        $this->City = $City;
+        $this->city = $city;
 
         return $this;
     }
 
     public function getPhone(): ?string
     {
-        return $this->Phone;
+        return $this->phone;
     }
 
-    public function setPhone(string $Phone): self
+    public function setPhone(string $phone): self
     {
-        $this->Phone = $Phone;
+        $this->phone = $phone;
 
         return $this;
     }
