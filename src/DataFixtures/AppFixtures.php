@@ -11,9 +11,17 @@ use App\Entity\Race;
 use DateTimeImmutable;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+
 
 class AppFixtures extends Fixture
 {
+    private UserPasswordHasherInterface $hasher;
+
+    public function __construct(UserPasswordHasherInterface $hasher)
+    {
+        $this->hasher = $hasher;
+    }
     public function load(ObjectManager $manager): void
     {
 
@@ -24,9 +32,14 @@ class AppFixtures extends Fixture
             ->setUsername("admin")
             ->setEmail('admin@gmail.com')
             ->setCity("lyon")
-            ->setPassword(password_hash("007", PASSWORD_DEFAULT))
             ->setPhone("+3312345678")
             ->setZipCode("69");
+        $admin->setPassword(
+            $this->hasher->hashPassword(
+                $admin,
+                '007'
+            )
+        );
         $manager->persist($admin);
 
         // Fixtures Adoptant
@@ -49,6 +62,12 @@ class AppFixtures extends Fixture
                 ->setZipCode($userData["address"]["zipcode"])
                 ->setFirstname($firstName)
                 ->setLastName($lastName);
+            $admin->setPassword(
+                $this->hasher->hashPassword(
+                    $admin,
+                    "mdp" . $i
+                )
+            );
             $manager->persist($adoptant);
             $adoptants[] = $adoptant;
         }
