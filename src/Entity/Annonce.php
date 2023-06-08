@@ -34,6 +34,10 @@ class Annonce
     #[ORM\OneToMany(mappedBy: 'Annonce', targetEntity: AdoptionOffer::class)]
     private Collection $adoptionOffers;
 
+    #[ORM\ManyToOne(inversedBy: 'annonces')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Annonceur $annonceur = null;
+
     public function __construct()
     {
         $this->dogs = new ArrayCollection();
@@ -149,6 +153,18 @@ class Annonce
                 $adoptionOffer->setAnnonce(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAnnonceur(): ?Annonceur
+    {
+        return $this->annonceur;
+    }
+
+    public function setAnnonceur(?Annonceur $annonceur): self
+    {
+        $this->annonceur = $annonceur;
 
         return $this;
     }
