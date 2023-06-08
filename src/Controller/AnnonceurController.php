@@ -9,7 +9,6 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class AnnonceurController extends AbstractController
 {
-    #[IsGranted('ROLE_ANNONCEUR')]
     #[Route('/annonceur', name: 'app_annonceur')]
     public function index(): Response
     {
