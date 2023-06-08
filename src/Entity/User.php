@@ -4,6 +4,9 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Nullable;
+// use phpDocumentor\Reflection\Types\Nullable;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -11,6 +14,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[ORM\InheritanceType("JOINED")]
 #[ORM\DiscriminatorColumn(name: "discr", type: "string")]
 #[ORM\DiscriminatorMap(["adoptant" => Adoptant::class, "annonceur" => Annonceur::class, "admin" => Admin::class])]
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
 
@@ -34,10 +38,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     protected ?string $city = null;
 
-    #[ORM\Column(length: 16)]
+    #[ORM\Column(length: 16, Nullable:true)]
     protected ?string $phone = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, Nullable:true)]
     protected ?string $zipCode = null;
 
     #[ORM\Column(length: 255)]
@@ -116,6 +120,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getCity(): ?string
     {
         return $this->city;
+        
     }
 
     public function setCity(string $city): self
@@ -128,12 +133,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getPhone(): ?string
     {
         return $this->phone;
+        
     }
 
     public function setPhone(string $phone): self
     {
         $this->phone = $phone;
-
+        
         return $this;
     }
 
