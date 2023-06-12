@@ -57,14 +57,13 @@ class AppFixtures extends Fixture
                 ->setUsername($userData["username"])
                 ->setEmail($userData["email"])
                 ->setCity($userData["address"]["city"])
-                ->setPassword(password_hash("mdp" . $i, PASSWORD_DEFAULT))
                 ->setPhone($userData["phone"])
                 ->setZipCode($userData["address"]["zipcode"])
                 ->setFirstname($firstName)
                 ->setLastName($lastName);
-            $admin->setPassword(
+            $adoptant->setPassword(
                 $this->hasher->hashPassword(
-                    $admin,
+                    $adoptant,
                     "mdp" . $i
                 )
             );
@@ -92,10 +91,16 @@ class AppFixtures extends Fixture
                 ->setUsername($userData["username"])
                 ->setEmail($assocData[$i - 5]["email"])
                 ->setCity($userData["address"]["city"])
-                ->setPassword(password_hash("mdp" . $i, PASSWORD_DEFAULT))
                 ->setPhone($userData["phone"])
                 ->setZipCode($userData["address"]["zipcode"])
                 ->setName($assocData[$i - 5]["assocName"]);
+
+                $annonceur->setPassword(
+                    $this->hasher->hashPassword(
+                        $annonceur,
+                        "mdp" . $i
+                    )
+                );
             $manager->persist($annonceur);
             $annonceurs[] = $annonceur;
         }
