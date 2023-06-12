@@ -65,4 +65,13 @@ class Annonceur extends User
 
         return $this;
     }
+
+    public function getRoles(): array
+    {
+        $roles = parent::getRoles();
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_ANNONCEUR';
+
+        return array_unique($roles);
+    }
 }
