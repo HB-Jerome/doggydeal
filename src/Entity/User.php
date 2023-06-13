@@ -33,16 +33,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     protected ?string $password = null;
 
-    #[ORM\Column(length: 255, nullable:true)]
+    #[ORM\Column(length: 255, nullable: true)]
     protected ?string $city = null;
 
-    #[ORM\Column(length: 16, nullable:true)]
+    #[ORM\Column(length: 32, nullable: true)]
     protected ?string $phone = null;
 
-    #[ORM\Column(length: 255, nullable:true)]
+    #[ORM\Column(length: 255, nullable: true)]
     protected ?string $zipCode = null;
 
-    #[ORM\Column(length: 255, nullable:true)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $username = null;
 
     public function getId(): ?int
@@ -118,7 +118,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getCity(): ?string
     {
         return $this->city;
-        
+
     }
 
     public function setCity(string $city): self
@@ -131,7 +131,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getPhone(): ?string
     {
         return $this->phone;
-        
+
     }
 
     public function setPhone(string $phone): self

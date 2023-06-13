@@ -33,7 +33,7 @@ class AppFixtures extends Fixture
             ->setUsername("admin")
             ->setEmail('admin@gmail.com')
             ->setCity("lyon")
-            ->setPhone("+3312345678")
+            ->setPhone("0123456789")
             ->setZipCode("69");
         $admin->setPassword(
             $this->hasher->hashPassword(
