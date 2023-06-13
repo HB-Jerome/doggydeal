@@ -18,6 +18,7 @@ class Image
 
     #[ORM\Column(length: 255)]
     private ?string $alt = null;
+    private ?string $description = null;
 
     #[ORM\ManyToOne(inversedBy: 'images')]
     #[ORM\JoinColumn(nullable: false)]
@@ -63,4 +64,20 @@ class Image
 
         return $this;
     }
+
+	/**
+	 * @return 
+	 */
+	public function getDescription(): ?string {
+		return $this->description;
+	}
+	
+	/**
+	 * @param  $description 
+	 * @return self
+	 */
+	public function setDescription(?string $description): self {
+		$this->description = $description;
+		return $this;
+	}
 }
