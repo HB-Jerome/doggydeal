@@ -7,6 +7,7 @@ use App\Entity\Adoptant;
 use App\Entity\Annonce;
 use App\Entity\Annonceur;
 use App\Entity\Dog;
+use App\Entity\Image;
 use App\Entity\Race;
 use DateTimeImmutable;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -123,6 +124,8 @@ class AppFixtures extends Fixture
             $annonces[] = $annonce;
         }
 
+        
+
         // Fixture Breed + Dog
         $dogsNames =
             [
@@ -165,6 +168,7 @@ class AppFixtures extends Fixture
                 ->setName($name)
                 ->setDescritpion($description);
             $races[] = $race;
+            $manager->persist($race);
         }
         $dogs = [];
         $descrip = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quid enim possumus hoc agere divinius? Vitae autem degendae ratio maxime quidem illis placuit quieta. Sin dicit obscurari quaedam nec apparere, quia valde parva sint, nos quoque concedimus; Duo Reges: constructio interrete. Non dolere, inquam, istud quam vim habeat postea videro; Quid ergo attinet dicere";
@@ -190,15 +194,38 @@ class AppFixtures extends Fixture
             }
             $randAnnonce = mt_rand(0, count($annonces) - 1);
             $dog->setAnnonce($annonces[$randAnnonce]);
+            $manager->persist($dog);
             $dogs[] = $dog;
         }
 
-        foreach ($dogs as $dog) {
-            $manager->persist($dog);
-        }
-        foreach ($races as $race) {
-            $manager->persist($race);
-        }
-        $manager->flush();
+// Fixtures Images
+$dogsImages =
+[
+    "img/dogs/01.jpg",
+    "img/dogs/02.jpg",
+    "img/dogs/03.jpg",
+    "img/dogs/04.jpg",
+    "img/dogs/05.jpg",
+    "img/dogs/06.jpg",
+    "img/dogs/07.jpg",
+    "img/dogs/08.jpg",
+    "img/dogs/09.jpg",
+];
+
+foreach ($dogsImages as $imagePath) {
+    $randomNumber = mt_rand(0, count($dogs) - 1);
+    $dog = $dogs[$randomNumber];
+        $image = new Image();
+    $image->setPath($imagePath);
+    $image->setAlt('image de chien');
+    $image->setDog($dog);
+    $dog->addImage($image);
+
+    $manager->persist($image);
+}
+    $manager->flush();
+
+
+       
     }
 }
