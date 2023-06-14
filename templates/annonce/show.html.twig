@@ -7,21 +7,34 @@
 	{{ dump() }}
 
 	{# <h1>{{ annonce.title }}</h1>
-		{{ annonce.createdAt|date('d/m/Y H:i') }}
+											{{ annonce.createdAt|date('d/m/Y H:i') }}
+											{% for dog in annonce.dogs %}
+												{% for image in dog.images %}
+													<img src="{{ asset(image.path) }}"/>
+												{% endfor %}
+											{% endfor %} #}
+
+	<div class="card-body text-center my-5 d-flex flex-column gap-2">
+		<h1 class="card-title">
+			{{ annonce.title }}
+
+		</h1>
 		{% for dog in annonce.dogs %}
+			<h2>{{ dog.name }}</h2>
+			{% for race in dog.races %}
+				{{ race.name -}}
+				{%- if not loop.last %},
+				{% endif %}
+			{% endfor %}
 			{% for image in dog.images %}
 				<img src="{{ asset(image.path) }}"/>
 			{% endfor %}
-		{% endfor %} #}
-
-	<div class="card-body text-center my-5 d-flex flex-column gap-2"> <h1 class="card-title">
-			{{ annonce.title }}
-		</h1>
+		{% endfor %}
 		<p class="card-text">
 			{{ annonce.createdAt|date('d/m/Y H:i') }}
 		</p>
 		<p class="card-text">
-		<a href="?page=cart&id=<?= $i; ?>" class="btn btn-primary">Adopter</a>	
+			<a href="?page=cart&id=<?= $i; ?>" class="btn btn-primary">Adopter</a>
 		</p>
 	</div>
 	<div>
