@@ -96,12 +96,12 @@ class AppFixtures extends Fixture
                 ->setZipCode($userData["address"]["zipcode"])
                 ->setName($assocData[$i - 5]["assocName"]);
 
-                $annonceur->setPassword(
-                    $this->hasher->hashPassword(
-                        $annonceur,
-                        "mdp" . $i
-                    )
-                );
+            $annonceur->setPassword(
+                $this->hasher->hashPassword(
+                    $annonceur,
+                    "mdp" . $i
+                )
+            );
             $manager->persist($annonceur);
             $annonceurs[] = $annonceur;
         }
@@ -124,7 +124,7 @@ class AppFixtures extends Fixture
             $annonces[] = $annonce;
         }
 
-        
+
 
         // Fixture Breed + Dog
         $dogsNames =
@@ -190,7 +190,6 @@ class AppFixtures extends Fixture
             for ($i = 0; $i <= $randnb; $i++) {
                 $randomNumber = mt_rand(0, count($races) - 1);
                 $dog->addRace($races[$randomNumber]);
-                $races[$randomNumber]->addDog($dog);
             }
             $randAnnonce = mt_rand(0, count($annonces) - 1);
             $dog->setAnnonce($annonces[$randAnnonce]);
@@ -198,34 +197,52 @@ class AppFixtures extends Fixture
             $dogs[] = $dog;
         }
 
-// Fixtures Images
-$dogsImages =
-[
-    "img/dogs/01.jpg",
-    "img/dogs/02.jpg",
-    "img/dogs/03.jpg",
-    "img/dogs/04.jpg",
-    "img/dogs/05.jpg",
-    "img/dogs/06.jpg",
-    "img/dogs/07.jpg",
-    "img/dogs/08.jpg",
-    "img/dogs/09.jpg",
-];
+        // Fixtures Images
+        $dogsImages =
+            [
+                "img/dogs/01.jpg",
+                "img/dogs/02.jpg",
+                "img/dogs/03.jpg",
+                "img/dogs/04.jpg",
+                "img/dogs/05.jpg",
+                "img/dogs/06.jpg",
+                "img/dogs/07.jpg",
+                "img/dogs/08.jpg",
+                "img/dogs/09.jpg",
+                "img/dogs/01.jpg",
+                "img/dogs/02.jpg",
+                "img/dogs/03.jpg",
+                "img/dogs/04.jpg",
+                "img/dogs/05.jpg",
+                "img/dogs/06.jpg",
+                "img/dogs/07.jpg",
+                "img/dogs/08.jpg",
+                "img/dogs/09.jpg",
+                "img/dogs/01.jpg",
+                "img/dogs/02.jpg",
+                "img/dogs/03.jpg",
+                "img/dogs/04.jpg",
+                "img/dogs/05.jpg",
+                "img/dogs/06.jpg",
+                "img/dogs/07.jpg",
+                "img/dogs/08.jpg",
+                "img/dogs/09.jpg",
+            ];
 
-foreach ($dogsImages as $imagePath) {
-    $randomNumber = mt_rand(0, count($dogs) - 1);
-    $dog = $dogs[$randomNumber];
-        $image = new Image();
-    $image->setPath($imagePath);
-    $image->setAlt('image de chien');
-    $image->setDog($dog);
-    $dog->addImage($image);
+        foreach ($dogsImages as $imagePath) {
+            $randomNumber = mt_rand(0, count($dogs) - 1);
+            $dog = $dogs[$randomNumber];
+            $image = new Image();
+            $image->setPath($imagePath);
+            $image->setAlt('image de chien');
+            $image->setDog($dog);
+            $dog->addImage($image);
 
-    $manager->persist($image);
-}
-    $manager->flush();
+            $manager->persist($image);
+        }
+        $manager->flush();
 
 
-       
+
     }
 }

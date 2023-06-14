@@ -18,7 +18,7 @@ class AnnonceController extends AbstractController
             'liste' => $annonces,
         ]);
     }
-    
+
     #[Route('/annonce/{id}', name: 'annonce_show')]
     public function show(int $id, AnnonceRepository $annonceRepository): Response
     {
@@ -36,4 +36,5 @@ class AnnonceController extends AbstractController
     //         'annonce' => $annonce,
     //     ]);
     // }
+
 }
