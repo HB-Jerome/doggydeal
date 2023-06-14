@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Details d'une annonce
+{% endblock %}
+
+{% block body %}
+	{{ dump() }}
+	<h1>{{ annonce.title }}</h1>
+	{{ annonce.createdAt|date('d/m/Y H:i') }}
+	{% for dog in annonce.dogs %}
+		{% for image in dog.images %}
+			<img src="{{ asset(image.path) }}"/>
+
+		{% endfor %}
+	{% endfor %}
+{% endblock %}
