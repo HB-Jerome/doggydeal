@@ -12,7 +12,7 @@
 		</form>
 	</nav>
 
-			<div class="flex">
+			
 		{% for annonce in annonces %}
 			<div class="card" style="width: 18rem;">
 				{% for dog in annonce.dogs %}
@@ -28,6 +28,12 @@
 						{% for race in dog.races %}
 							<h1>{{race.name}}</h1>
 						{% endfor %}
+						{% for adopted in dog %}
+						<h1>{{dog.IsAdopted}}</h1>
+						{% endfor %}
+						 {% if dog.IsAdopted == false %}
+							<p>Yes</p>
+						 {% endif %}
 					{% endfor %}
 					<a href="#" class="btn btn-primary">Voir l'annonce</a>
 				</div>
