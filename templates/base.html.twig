@@ -24,7 +24,23 @@
 			<a class="btn btn-outline-success  my-sm-0" href="{{path('app_register')}}">Inscription</a>
 		</form>
 	</nav>
+		<nav class="navbar navbar-light justify-content-between mx-4">
+			<a class="navbar-brand">DOGGY DEAL</a>
+			<div class="form-inline d-flex align-items-start gap-1">
+				<a class="btn btn-outline-success  my-sm-0" href="{{path('app_login')}}">Login</a>
+				<a class="btn btn-outline-success  my-sm-0" href="{{path('app_register')}}">Inscription</a>
+			</div>
+		</nav>
 		{% block body %}{% endblock %}
+		<footer>
+			<div class="container d-flex align-items-center justify-content-between">
+				<div class="w-25"></div>
+				<p class="w-50 text-center">
+					DOGGY DEAL © 2023
+				</p>
+				<div class="w-25"></div>
+			</div>
+		</footer>
 		<script src="{{ asset('js/bootstrap.js') }}" defer></script>
 	</body>
 </html>
