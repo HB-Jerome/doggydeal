@@ -6,6 +6,9 @@
 <h1>Liste des annonces</h1>
     {% for annonce in liste %}
         {# {{ dump(annonce) }} #}
-        <p>titre:{{annonce.title}}</p>
+        
+          <a class="p-3" href="{{ path('annonce_show', {id: annonce.id}) }}">
+    <p>titre: {{ annonce.title }}</p>
+  </a>
     {% endfor %}
 {% endblock %}

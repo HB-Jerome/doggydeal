@@ -108,7 +108,7 @@ class AppFixtures extends Fixture
 
         // Fixture Annonce
         $annonces = [];
-        for ($i = 1; $i < 5; $i++) {
+        for ($i = 1; $i < 15; $i++) {
             $titleData = json_decode(file_get_contents("https://jsonplaceholder.typicode.com/posts/" . $i), true);
             $title = $titleData["title"];
             $randAnnonceur = mt_rand(0, count($annonceurs) - 1);
