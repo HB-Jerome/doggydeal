@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Annonce;
+use App\Entity\Dog;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -63,4 +64,18 @@ class AnnonceRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+public function annonceList()
+{
+    return $this->createQueryBuilder('a')
+        ->select(['a'])
+
+        ->orderBy('a.modifiedAt', 'DESC')
+        
+        ->setMaxResults(5) 
+        
+        ->getQuery() 
+        
+        ->getResult() 
+    ;
+}
 }

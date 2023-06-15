@@ -1,43 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DefaultController!
+{% block title %}DOGGY DEAL
 {% endblock %}
 
 {% block body %}
-	<style>
-		.example-wrapper {
-			margin: 1em auto;
-			max-width: 800px;
-			width: 95%;
-			font: 18px / 1.5 sans-serif;
-		}
-		.example-wrapper code {
-			background: #F5F5F5;
-			padding: 2px 6px;
-		}
-	</style>
+	<nav class="navbar navbar-light bg-light justify-content-between">
+		<a class="navbar-brand">DOGGY DEAL</a>
+		<form class="form-inline d-flex align-items-start">
+			<a class="btn btn-outline-success  my-sm-0" href="{{path('app_login')}}">Login</a>
+			<a class="btn btn-outline-success  my-sm-0" href="{{path('app_register')}}">Inscription</a>
+		</form>
+	</nav>
 
-	<div class="example-wrapper">
-		<h1>Hello
-			{{ controller_name }}! ✅</h1>
+			
+		{% for annonce in annonces %}
+			<div class="card" style="width: 18rem;">
+				{% for dog in annonce.dogs %}
+					{% for image in dog.images %}
+						<img src="{{ asset(image.path) }}" class="card-img-top" alt="...">
+					{% endfor %}
+				{% endfor %}
+				<div class="card-body">
+					<h1 class="card-title">{{annonce.title}}</h1>
+					<p class="card-text">{{annonce.modifiedAt| date('d/m/Y H:i')}}</p>
+					{% for dog in annonce.dogs %}
+							<h2>{{dog.name}}</h2>
+						{% for race in dog.races %}
+							<h1>{{race.name}}</h1>
+						{% endfor %}
+						{% for adopted in dog %}
+						<h1>{{dog.IsAdopted}}</h1>
+						{% endfor %}
+						 {% if dog.IsAdopted == false %}
+							<p>Yes</p>
+						 {% endif %}
+					{% endfor %}
+					<a href="#" class="btn btn-primary">Voir l'annonce</a>
+				</div>
 
 
-		{% if is_granted('ROLE_ADMIN') %}
-			Coucou
-		{% endif %}
-
-		This friendly message is coming from:
-		<ul>
-			<li>Your controller at
-				<code>
-					<a href="{{ '/Users/snowkirati/doggydeal/src/Controller/DefaultController.php'|file_link(0) }}">src/Controller/DefaultController.php</a>
-				</code>
-			</li>
-			<li>Your template at
-				<code>
-					<a href="{{ '/Users/snowkirati/doggydeal/templates/default/index.html.twig'|file_link(0) }}">templates/default/index.html.twig</a>
-				</code>
-			</li>
-		</ul>
+			</div>
+		{% endfor %}
 	</div>
+
 {% endblock %}
