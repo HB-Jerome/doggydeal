@@ -35,33 +35,4 @@
 		<hr>
 		<a class="btn btn-primary" href="#">Voir Tout</a>
 	</div>
-	{# <div class="text-center my-5 gap-2 ">
-		{% for annonce in annonces %}
-			<hr class="mx-auto w-80">
-			<h1>
-				{{ annonce.title }}
-			</h1>
-			<hr class="mx-auto w-80">
-			{% for dog in annonce.dogs %}
-				<h2>{{ dog.name }}</h2>
-				{% for race in dog.races %}
-					{{ race.name -}}
-					{%- if not loop.last %},
-					{% endif %}
-				{% endfor %}
-				<hr class="mx-auto w-80">
-				<div class="d-flex justify-content-center gap-2">
-					{% for image in dog.images %}
-						<img src="{{ asset(image.path) }}"/>
-					{% endfor %}
-				</div>
-			{% endfor %}
-			<p class="card-text">
-				{{ annonce.createdAt|date('d/m/Y H:i') }}
-			</p>
-			<p class="card-text">
-				<a href="?page=cart&id=<?= $i; ?>" class="btn btn-primary">Adopter</a>
-			</p>
-		{% endfor %}
-		</div> #}
 	{% endblock %}
