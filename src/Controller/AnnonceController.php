@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Annonce;
 use App\Repository\AnnonceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,21 +21,14 @@ class AnnonceController extends AbstractController
     }
 
     #[Route('/annonce/{id}', name: 'annonce_show')]
-    public function show(int $id, AnnonceRepository $annonceRepository): Response
+    public function show(Annonce $annonce): Response
     {
-        $annonce = $annonceRepository->find($id);
-
+        if (is_null($annonce)) {
+            throw $this->createNotFoundException();
+        }
         return $this->render('annonce/show.html.twig', [
             'annonce' => $annonce,
         ]);
     }
-
-    // Version alternative (param converter) : https://formation-hb.drakolab.fr/symfony/24-doctrine.html#le-paramconverter-de-doctrine
-    // public function show(Annonce $annonce): Response
-    // {
-    //     return $this->render('annonce/show.html.twig', [
-    //         'annonce' => $annonce,
-    //     ]);
-    // }
 
 }
