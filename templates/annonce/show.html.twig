@@ -6,18 +6,20 @@
 {% block body %}
 	{{ dump() }}
 
-														{# <h1>{{ annonce.title }}</h1>
-														{{ annonce.createdAt|date('d/m/Y H:i') }}
-														{% for dog in annonce.dogs %}
-															{% for image in dog.images %}
-																<img src="{{ asset(image.path) }}"/>
-															{% endfor %}
-														{% endfor %} #}
+	{# <h1>{{ annonce.title }}</h1>
+															{{ annonce.createdAt|date('d/m/Y H:i') }}
+															{% for dog in annonce.dogs %}
+																{% for image in dog.images %}
+																	<img src="{{ asset(image.path) }}"/>
+																{% endfor %}
+															{% endfor %} #}
 
-	<div class="card-body text-center my-5 d-flex flex-column gap-2">
-		<h1 class="card-title">
+	<div class="text-center my-5 gap-2 ">
+	<hr class="mx-auto w-80">
+		<h1>
 			{{ annonce.title }}
 		</h1>
+<hr class="mx-auto w-80">
 		{% for dog in annonce.dogs %}
 			<h2>{{ dog.name }}</h2>
 			{% for race in dog.races %}
@@ -25,9 +27,12 @@
 				{%- if not loop.last %},
 				{% endif %}
 			{% endfor %}
-			{% for image in dog.images %}
-				<img src="{{ asset(image.path) }}"/>
-			{% endfor %}
+<hr class="mx-auto w-80">
+			<div class="d-flex justify-content-center gap-2">
+				{% for image in dog.images %}
+					<img src="{{ asset(image.path) }}"/>
+				{% endfor %}
+			</div>
 		{% endfor %}
 		<p class="card-text">
 			{{ annonce.createdAt|date('d/m/Y H:i') }}
@@ -35,21 +40,7 @@
 		<p class="card-text">
 			<a href="?page=cart&id=<?= $i; ?>" class="btn btn-primary">Adopter</a>
 		</p>
+		
 	</div>
-	<div>
-		{% for dog in annonce.dogs %}
-			<div class="d-flex justify-content-center gap-2">
-				{% for image in dog.images %}
-					<img src="{{ asset(image.path) }}"/>
-				{% endfor %}
-			{% endfor %}
-		</div>
-	</div>
-
-	    <div class="d-flex p-2 gap-2 justify-content-center align-items-center" style="height: 400px;">
-        <img src="{{asset('/media/poppy_1.jpg')}}" class="card-img-top rounded h-100 object-fit-cover" alt="...">
-        <img src="{{asset('/media/poppy_2.jpg')}}" class="card-img-top rounded h-100 object-fit-cover" alt="...">
-        <img src="{{asset('/media/poppy_3.jpg')}}" class="card-img-top rounded h-100 object-fit-cover" alt="...">
-    </div>
 
 {% endblock %}
