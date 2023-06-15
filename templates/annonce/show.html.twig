@@ -6,18 +6,17 @@
 {% block body %}
 	{{ dump() }}
 
-	{# <h1>{{ annonce.title }}</h1>
-											{{ annonce.createdAt|date('d/m/Y H:i') }}
-											{% for dog in annonce.dogs %}
-												{% for image in dog.images %}
-													<img src="{{ asset(image.path) }}"/>
-												{% endfor %}
-											{% endfor %} #}
+														{# <h1>{{ annonce.title }}</h1>
+														{{ annonce.createdAt|date('d/m/Y H:i') }}
+														{% for dog in annonce.dogs %}
+															{% for image in dog.images %}
+																<img src="{{ asset(image.path) }}"/>
+															{% endfor %}
+														{% endfor %} #}
 
 	<div class="card-body text-center my-5 d-flex flex-column gap-2">
 		<h1 class="card-title">
 			{{ annonce.title }}
-
 		</h1>
 		{% for dog in annonce.dogs %}
 			<h2>{{ dog.name }}</h2>
