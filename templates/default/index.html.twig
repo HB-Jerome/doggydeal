@@ -4,43 +4,35 @@
 {% endblock %}
 
 {% block body %}
-	<nav class="navbar navbar-light bg-light justify-content-between">
-		<a class="navbar-brand">DOGGY DEAL</a>
-		<form class="form-inline d-flex align-items-start">
-			<a class="btn btn-outline-success  my-sm-0" href="{{path('app_login')}}">Login</a>
-			<a class="btn btn-outline-success  my-sm-0" href="{{path('app_register')}}">Inscription</a>
-		</form>
-	</nav>
 
-			
+	<div class="text-center my-5 gap-2">
 		{% for annonce in annonces %}
-			<div class="card" style="width: 18rem;">
-				{% for dog in annonce.dogs %}
+			<hr class="mx-auto w-80">
+			{% for dog in annonce.dogs %}
+				<div class="d-flex p-2 gap-2 justify-content-center align-items-center">
 					{% for image in dog.images %}
-						<img src="{{ asset(image.path) }}" class="card-img-top" alt="...">
+						<img src="{{ asset(image.path) }}" class="rounded" alt="...">
 					{% endfor %}
-				{% endfor %}
-				<div class="card-body">
-					<h1 class="card-title">{{annonce.title}}</h1>
-					<p class="card-text">{{annonce.modifiedAt| date('d/m/Y H:i')}}</p>
-					{% for dog in annonce.dogs %}
-							<h2>{{dog.name}}</h2>
-						{% for race in dog.races %}
-							<h1>{{race.name}}</h1>
-						{% endfor %}
-						{% for adopted in dog %}
-						<h1>{{dog.IsAdopted}}</h1>
-						{% endfor %}
-						 {% if dog.IsAdopted == false %}
-							<p>Yes</p>
-						 {% endif %}
-					{% endfor %}
-					<a href="#" class="btn btn-primary">Voir l'annonce</a>
 				</div>
-
-
+			{% endfor %}
+			<div class="card-body">
+				<h1 class="card-title">{{annonce.title}}</h1>
+				<p class="card-text">{{annonce.modifiedAt| date('d/m/Y H:i')}}</p>
+				{% for dog in annonce.dogs %}
+					<h2>{{dog.name}}</h2>
+					{% for race in dog.races %}
+						<h1>{{race.name}}</h1>
+					{% endfor %}
+					{% if dog.isAdopted == false %}
+						<p>Pas encore adopté</p>
+					{% else %}
+						<p>Adopté</p>
+					{% endif %}
+				{% endfor %}
+				<a href="#" class="btn btn-primary">Voir l'annonce</a>
 			</div>
 		{% endfor %}
+		<hr>
+		<a class="btn btn-primary" href="#">Voir Tout</a>
 	</div>
-
-{% endblock %}
+	{% endblock %}

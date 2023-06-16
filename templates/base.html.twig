@@ -9,14 +9,21 @@
 		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
 
 		{% block stylesheets %}
-			<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
-			<link rel="stylesheet" href="{{ asset('css/reset.css') }}">
-			<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+			<link rel="stylesheet" href="{{ asset('CSS/bootstrap.css') }}">
+			<link rel="stylesheet" href="{{ asset('CSS/reset.css') }}">
+			<link rel="stylesheet" href="{{ asset('CSS/style.css') }}">
 		{% endblock %}
 
 		{% block javascripts %}{% endblock %}
 	</head>
 	<body>
+	<nav class="navbar navbar-light bg-light justify-content-between">
+		<a class="navbar-brand">DOGGY DEAL</a>
+		<form class="form-inline d-flex align-items-start">
+			<a class="btn btn-outline-success  my-sm-0" href="{{path('app_login')}}">Login</a>
+			<a class="btn btn-outline-success  my-sm-0" href="{{path('app_register')}}">Inscription</a>
+		</form>
+	</nav>
 		{% block body %}{% endblock %}
 		<script src="{{ asset('js/bootstrap.js') }}" defer></script>
 	</body>
