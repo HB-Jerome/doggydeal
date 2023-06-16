@@ -15,9 +15,9 @@ body {
 
 header {
     background: linear-gradient(to top right,
-			rgb(0, 0, 0,0.6),
-			#00000033),
-			url("../img/dogs/01.jpg") no-repeat center;
+			rgba(67, 66, 66, 0.6),
+			#484646df),
+			url("../img/logo/imgBG.jpeg") no-repeat center;
     background-size: cover;
     color: white;
     padding: 20px;
@@ -34,13 +34,13 @@ h1 {
 }
 
 footer {
-    margin-top : 50px;
-    height : 200px;
+    margin-top : 25px;
+    height : 100px;
     background-color: #939197;
     color : white;
-    font-size: 30px;
+    font-size: 15px;
     text-transform: uppercase;
-    padding : 50px 10px;
+    /* padding : 50px 10px; */
 }
 
 /* footer img {
