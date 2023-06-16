@@ -17,6 +17,7 @@
 		{% block javascripts %}{% endblock %}
 	</head>
 	<body>
+<<<<<<< HEAD
 	<nav class="navbar navbar-light bg-light justify-content-between">
 		<a class="navbar-brand">DOGGY DEAL</a>
 		<form class="form-inline d-flex align-items-start">
@@ -24,6 +25,14 @@
 			<a class="btn btn-outline-success  my-sm-0" href="{{path('app_register')}}">Inscription</a>
 		</form>
 	</nav>
+=======
+		<header>
+			<div>
+				<h1>DOGGY DEAL</h1>
+				<p>Vien nous adopter!</p>
+			</div>
+		</header>
+>>>>>>> Mis en form footer et modifier header
 		<nav class="navbar navbar-light justify-content-between mx-4">
 			<a class="navbar-brand">DOGGY DEAL</a>
 			<div class="form-inline d-flex align-items-start gap-1">
@@ -33,14 +42,12 @@
 		</nav>
 		{% block body %}{% endblock %}
 		<footer>
-			<div class="container d-flex align-items-center justify-content-between">
-				<div class="w-25"></div>
-				<p class="w-50 text-center">
-					DOGGY DEAL © 2023
-				</p>
-				<div class="w-25"></div>
+			<div class="container d-flex align-items-center">
+				<div class="w-25">
+					<img src={{asset('img/logo/doglogo.png')}} width="50%">
+				</div>
+				<p class="w-50 text-center">DOGGY DEAL © 2023</p>
 			</div>
-		</footer>
-		<script src="{{ asset('js/bootstrap.js') }}" defer></script>
+		</div>
 	</body>
-</html>
+</html></footer><script src="{{ asset('js/bootstrap.js') }}" defer></script></body></html>
