@@ -19,12 +19,11 @@
 	<body>
 		<header>
 			<div>
-				<h1>DOGGY DEAL</h1>
-				<p>Viens nous adopter !</p>
+				<a href="{{path('app_default')}}"><h1>DOGGY DEAL</h1>Viens nous adopter !</a>
 			</div>
 		</header>
 		<nav class="navbar navbar-light justify-content-between mx-4">
-			<a class="navbar-brand">DOGGY DEAL</a>
+			<a href="{{path('app_default')}}" class="navbar-brand">DOGGY DEAL</a>
 			<div class="form-inline d-flex align-items-start gap-1">
 				<a class="btn btn-outline-success  my-sm-0" href="{{path('app_login')}}">Login</a>
 				<a class="btn btn-outline-success  my-sm-0" href="{{path('app_register')}}">Inscription</a>
