@@ -11,7 +11,7 @@
 			{% for dog in annonce.dogs %}
 				<div class="d-flex p-2 gap-2 justify-content-center align-items-center">
 					{% for image in dog.images %}
-						<img src="{{ asset(image.path) }}" class="rounded" alt="...">
+						<img src="{{ asset(image.path) }}" alt="...">
 					{% endfor %}
 				</div>
 			{% endfor %}
