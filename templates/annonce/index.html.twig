@@ -13,13 +13,14 @@
 		<button type="submit">Verifier</button>
 		{{ form_end(form)}}
 	</div>
-	<h1>Liste des annonces</h1>
-	{% for annonce in liste %}
-		{# {{ dump(annonce) }} #}
-
-		<a class="p-3" href="{{ path('annonce_show', {id: annonce.id}) }}">
-			<p>titre:
-				{{ annonce.title }}</p>
-		</a>
-	{% endfor %}
+	<div class="container">
+		<h1 class="mf-2 my-4">Liste des annonces</h1>
+		{% for annonce in liste %}
+			{# {{ dump(annonce) }} #}
+			<a class="p-3" href="{{ path('annonce_show', {id: annonce.id}) }}">
+				<p>Race:
+					{{ annonce.title }}</p>
+			</a>
+		{% endfor %}
+	</div>
 {% endblock %}
