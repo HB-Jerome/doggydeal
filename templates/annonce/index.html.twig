@@ -1,14 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Annonces{% endblock %}
+{% block title %}Annonces
+{% endblock %}
 
 {% block body %}
-<h1>Liste des annonces</h1>
-    {% for annonce in liste %}
-        {# {{ dump(annonce) }} #}
-        
-          <a class="p-3" href="{{ path('annonce_show', {id: annonce.id}) }}">
-    <p>titre: {{ annonce.title }}</p>
-  </a>
-    {% endfor %}
+
+	<div class="container">
+		{{ form_start(form) }}
+		{{ form_row(form.race) }}
+		{{ form_row(form.isLof) }}
+
+		<button type="submit">Verifier</button>
+		{{ form_end(form)}}
+	</div>
+	<h1>Liste des annonces</h1>
+	{% for annonce in liste %}
+		{# {{ dump(annonce) }} #}
+
+		<a class="p-3" href="{{ path('annonce_show', {id: annonce.id}) }}">
+			<p>titre:
+				{{ annonce.title }}</p>
+		</a>
+	{% endfor %}
 {% endblock %}

@@ -44,6 +44,9 @@ class Dog
     #[ORM\ManyToMany(targetEntity: AdoptionOffer::class, mappedBy: 'dogs')]
     private Collection $adoptionOffers;
 
+    #[ORM\Column]
+    private ?bool $isLof = null;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -208,6 +211,18 @@ class Dog
         if ($this->adoptionOffers->removeElement($adoptionOffer)) {
             $adoptionOffer->removeDog($this);
         }
+
+        return $this;
+    }
+
+    public function isIsLof(): ?bool
+    {
+        return $this->isLof;
+    }
+
+    public function setIsLof(bool $isLof): static
+    {
+        $this->isLof = $isLof;
 
         return $this;
     }
