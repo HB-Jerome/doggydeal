@@ -4,7 +4,6 @@
 {% endblock %}
 
 {% block body %}
-<<<<<<< HEAD
 
 	<div class="container">
 		{{ form_start(form) }}
@@ -14,7 +13,7 @@
 		<button type="submit">Verifier</button>
 		{{ form_end(form)}}
 	</div>
-<<<<<<< HEAD
+
 	<div class="container">
 		<h1 class="mf-2 my-4">Liste des annonces</h1>
 		{% for annonce in liste %}
@@ -25,14 +24,4 @@
 			</a>
 		{% endfor %}
 	</div>
-<h1>Liste des annonces</h1>
-    {% for annonce in liste %}
-        {# {{ dump(annonce) }} #}
-        
-          <a class="p-3" href="{{ path('annonce_show', {id: annonce.getId}) }}">
-    <p>titre: {{ annonce.title }}</p>
-  </a>
-    {% endfor %}
->>>>>>> 0c01ee1 (Reponse_Annonce)
->>>>>>> ebf72e7 (Reponse_Annonce)
 {% endblock %}
