@@ -78,4 +78,7 @@ public function annonceList()
         ->getResult() 
     ;
 }
+
+
+
 }

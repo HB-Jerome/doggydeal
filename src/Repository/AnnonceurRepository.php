@@ -63,4 +63,18 @@ class AnnonceurRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+
+public function annonceListSPA()
+{
+    return $this->createQueryBuilder('annonceur')
+        ->leftJoin('annonceur.annonces', 'annonce')
+        ->groupBy('annonceur')
+        ->orderBy('annonce.modifiedAt', 'DESC')
+        ->getQuery()
+        ->getResult();
+}
+
+
+
 }
