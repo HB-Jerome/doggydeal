@@ -38,7 +38,8 @@
 			{{ annonce.createdAt|date('d/m/Y H:i') }}
 		</p>
 		<p class="card-text">
-			<a href="?page=cart&id=<?= $i; ?>" class="btn btn-primary">Adopter</a>
+		{{dump(annonce.getId)}}
+			<a href="{{ path('response_offer', {'id': annonce.getId }) }}" class="btn btn-primary">Adopter</a>
 		</p>
 	</div>
 

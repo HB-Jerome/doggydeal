@@ -16,14 +16,14 @@ class AdoptionOffer
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $CreatedAt = null;
+    private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column]
     private ?bool $isAccepted = null;
 
     #[ORM\ManyToOne(inversedBy: 'adoptionOffers')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Annonce $Annonce = null;
+    private ?Annonce $annonce = null;
 
     #[ORM\ManyToMany(targetEntity: Dog::class, inversedBy: 'adoptionOffers')]
     private Collection $dogs;
@@ -48,12 +48,12 @@ class AdoptionOffer
 
     public function getCreatedAt(): ?\DateTimeImmutable
     {
-        return $this->CreatedAt;
+        return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $CreatedAt): self
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
     {
-        $this->CreatedAt = $CreatedAt;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
@@ -72,12 +72,12 @@ class AdoptionOffer
 
     public function getAnnonce(): ?Annonce
     {
-        return $this->Annonce;
+        return $this->annonce;
     }
 
-    public function setAnnonce(?Annonce $Annonce): self
+    public function setAnnonce(?Annonce $annonce): self
     {
-        $this->Annonce = $Annonce;
+        $this->annonce = $annonce;
 
         return $this;
     }
