@@ -74,4 +74,18 @@ class Annonceur extends User
 
         return array_unique($roles);
     }
+    public function getNbAnnoncesPourvues(): int
+    {
+        $comptePourvues = 0;
+        foreach ($this->annonces as $annonce) {
+            if ($annonce->estPourvue()) {
+                $comptePourvues++;
+            }
+        }
+
+        return $comptePourvues;
+        // return $this->annonces->filter(function(Annonce $annonce) {
+        //     return $annonce->estPourvue();
+        // })->count();
+    }
 }

@@ -35,4 +35,17 @@
 		<hr>
 		<a class="btn btn-primary" href="#">Voir Tout</a>
 	</div>
+
+
+
+<div class="text-center my-5 gap-2">>
+{% for annonceur in annonceurs %}
+			<hr class="mx-auto w-80">
+			<h1 class="card-title">{{annonceur.name}}</h1>
+			<h1 class="card-title">Nombre d'annonces à pourvoir: {{annonceur.annonces|length - annonceur.getNbAnnoncesPourvues()}}</h1>
+			<h1 class="card-title">Nombre d'annonces pourvues:  {{annonceur.getNbAnnoncesPourvues()}}</h1>
+{% endfor %}
+</div>
+
+
 	{% endblock %}

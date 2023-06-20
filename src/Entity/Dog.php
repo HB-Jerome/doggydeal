@@ -26,7 +26,7 @@ class Dog
     private ?string $antecedant = null;
 
     #[ORM\Column]
-    private ?bool $isAdopted = null;
+    private bool $isAdopted = false;
 
     #[ORM\Column]
     private ?bool $acceptAnimmals = null;
