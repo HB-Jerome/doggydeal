@@ -39,7 +39,7 @@ class AnnonceurRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
+    //    /**
 //     * @return Annonceur[] Returns an array of Annonceur objects
 //     */
 //    public function findByExampleField($value): array
@@ -54,7 +54,7 @@ class AnnonceurRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Annonceur
+    //    public function findOneBySomeField($value): ?Annonceur
 //    {
 //        return $this->createQueryBuilder('a')
 //            ->andWhere('a.exampleField = :val')
@@ -64,13 +64,13 @@ class AnnonceurRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-public function annonceListSPA()
-{
-    return $this->createQueryBuilder('annonceur')
-        ->leftJoin('annonceur.annonces', 'annonce')
-        ->groupBy('annonceur')
-        ->orderBy('annonce.modifiedAt', 'DESC')
-        ->getQuery();
-        // ->getResult();
-}
+    public function annonceListSPA()
+    {
+        return $this->createQueryBuilder('annonceur')
+            ->leftJoin('annonceur.annonces', 'annonce')
+            ->groupBy('annonceur')
+            ->orderBy('annonce.modifiedAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }
