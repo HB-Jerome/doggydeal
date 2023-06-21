@@ -91,7 +91,7 @@ public function filtreAnnonce(FiltreAnnonce $filtre): array
     if ($filtre->getIsLof()) {
         $qb->andWhere('dog.isLof=:isLof')->setParameter('isLof', $filtre->getIsLof());
     }
-    if ($filtre->getRace()) {
+    if (!is_null($filtre->getRace())) {
         $qb->andWhere('race=:race')->setParameter('race', $filtre->getRace());
     }
 
