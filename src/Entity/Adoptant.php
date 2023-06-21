@@ -6,18 +6,14 @@ use App\Repository\AdoptantRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use App\Entity\User;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-
 
 #[ORM\Entity(repositoryClass: AdoptantRepository::class)]
 class Adoptant extends User
 {
-
-    #[ORM\Column(length: 255, nullable:true)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $firstName = null;
 
-    #[ORM\Column(length: 255, nullable:true)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $lastName = null;
 
     #[ORM\OneToMany(mappedBy: 'adoptants', targetEntity: AdoptionOffer::class)]
@@ -27,7 +23,6 @@ class Adoptant extends User
     {
         $this->adoptionOffers = new ArrayCollection();
     }
-
 
     public function getFirstName(): ?string
     {
