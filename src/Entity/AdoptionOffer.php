@@ -25,15 +25,15 @@ class AdoptionOffer
     #[ORM\JoinColumn(nullable: false)]
     private ?Annonce $annonce = null;
 
-    #[ORM\ManyToMany(targetEntity: Dog::class, inversedBy: 'adoptionOffers')]
+    #[ORM\ManyToMany(targetEntity: Dog::class, inversedBy: 'adoptionOffers', cascade:['persist'])]
     private Collection $dogs;
 
-    #[ORM\OneToMany(mappedBy: 'AdoptionOffer', targetEntity: Message::class)]
+    #[ORM\OneToMany(mappedBy: 'AdoptionOffer', targetEntity: Message::class, cascade:['persist'])]
     private Collection $messages;
 
-    #[ORM\ManyToOne(inversedBy: 'adoptionOffers')]
+    #[ORM\ManyToOne(inversedBy: 'adoptionOffers', cascade:['persist'] )]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Adoptant $adoptants = null;
+    private ?Adoptant $adoptant = null;
 
     public function __construct()
     {
@@ -136,14 +136,14 @@ class AdoptionOffer
         return $this;
     }
 
-    public function getAdoptants(): ?Adoptant
+    public function getAdoptant(): ?Adoptant
     {
-        return $this->adoptants;
+        return $this->adoptant;
     }
 
-    public function setAdoptants(?Adoptant $adoptants): self
+    public function setAdoptant(?Adoptant $adoptant): self
     {
-        $this->adoptants = $adoptants;
+        $this->adoptant = $adoptant;
 
         return $this;
     }

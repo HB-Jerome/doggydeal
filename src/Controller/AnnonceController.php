@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\AdoptionOffer;
 use App\Entity\Annonce;
+use App\Entity\Message;
 use App\Form\Filtre\FiltreAnnonce;
 use App\Form\FiltreAnnonceType;
 use App\Form\AdoptionOfferType;
@@ -46,14 +47,17 @@ class AnnonceController extends AbstractController
     #[Route("/annonce/{id}/response", name: "response_offer" , requirements: ['id' => "\d+"])]
     public function new(Request $request, AdoptionOfferRepository $adoptionOfferRepository, Annonce $annonce): Response
     {
-        if($annonce == null){
-            $annonce = new Annonce();
-        }
         
         $adoptionOffer = new AdoptionOffer;
+        $adoptionOffer->addMessage(new Message());
+        
+        $adoptant = $this->getUser();
+        $adoptionOffer->setAdoptant($adoptant);
 
         // dd($annonce->getId());
-        $form = $this->createForm(AdoptionOfferType::class, $adoptionOffer);
+        $form = $this->createForm(AdoptionOfferType::class, $adoptionOffer,[
+            'id' => $annonce->getId()
+        ]);
 // dd($annonce);
         $form->handleRequest($request);
 

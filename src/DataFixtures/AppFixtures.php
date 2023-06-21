@@ -42,8 +42,8 @@ class AppFixtures extends Fixture
         $manager->persist($admin);
 
         // Fixtures Adoptant
-        $usersData = json_decode(file_get_contents('https://jsonplaceholder.typicode.com/users'), true);
-        $adoptants = [];
+        $usersData = json_decode(file_get_contents("https://jsonplaceholder.typicode.com/users"), true);
+        $adoptant = [];
 
         for ($i = 0; $i < 5; ++$i) {
             $userData = $usersData[$i];
