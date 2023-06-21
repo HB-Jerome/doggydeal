@@ -64,7 +64,6 @@ class AnnonceurRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-
 public function annonceListSPA()
 {
     return $this->createQueryBuilder('annonceur')
@@ -74,7 +73,4 @@ public function annonceListSPA()
         ->getQuery()
         ->getResult();
 }
-
-
-
 }

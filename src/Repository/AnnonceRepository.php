@@ -3,7 +3,6 @@
 namespace App\Repository;
 
 use App\Entity\Annonce;
-use App\Entity\Dog;
 use App\Form\Filtre\FiltreAnnonce;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query\Expr\OrderBy;
@@ -72,16 +71,16 @@ public function annonceList()
         ->select(['a'])
 
         ->orderBy('a.modifiedAt', 'DESC')
-        
-        ->setMaxResults(5) 
-        
-        ->getQuery() 
-        
-        ->getResult() 
+
+        ->setMaxResults(5)
+
+        ->getQuery()
+
+        ->getResult()
     ;
 }
 
-public function filtreAnnonce(FiltreAnnonce $filtre):array
+public function filtreAnnonce(FiltreAnnonce $filtre): array
 {
     $qb = $this->createQueryBuilder('a')
 
@@ -89,17 +88,13 @@ public function filtreAnnonce(FiltreAnnonce $filtre):array
 
         ->leftJoin('dog.races', 'race');
 
-        if ($filtre->getIsLof()){
-
-            $qb->andWhere('dog.isLof=:isLof')->setParameter('isLof', $filtre->getIsLof());
-        }
-        if ($filtre->getRace()){
-
-            $qb->andWhere('race=:race')->setParameter('race', $filtre->getRace());
-        }
+    if ($filtre->getIsLof()) {
+        $qb->andWhere('dog.isLof=:isLof')->setParameter('isLof', $filtre->getIsLof());
+    }
+    if ($filtre->getRace()) {
+        $qb->andWhere('race=:race')->setParameter('race', $filtre->getRace());
+    }
 
     return $qb->getQuery()->getResult();
-
 }
-
 }

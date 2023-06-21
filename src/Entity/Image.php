@@ -65,19 +65,15 @@ class Image
         return $this;
     }
 
-	/**
-	 * @return 
-	 */
-	public function getDescription(): ?string {
-		return $this->description;
-	}
-	
-	/**
-	 * @param  $description 
-	 * @return self
-	 */
-	public function setDescription(?string $description): self {
-		$this->description = $description;
-		return $this;
-	}
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
 }

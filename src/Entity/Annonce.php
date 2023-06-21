@@ -169,13 +169,14 @@ class Annonce
         return $this;
     }
 
-    public function estPourvue(): bool 
+    public function estPourvue(): bool
     {
         foreach ($this->getDogs() as $dog) {
             if (!$dog->isIsAdopted()) {
                 return false;
             }
         }
+
         return true;
     }
 }

@@ -18,7 +18,7 @@ class DefaultController extends AbstractController
         $annonceurs = $annonceurRepository->annonceListSPA();
 
         return $this->render('default/index.html.twig', [
-            'annonces' => $annonces, 
+            'annonces' => $annonces,
             'annonceurs' => $annonceurs,
         ]);
     }

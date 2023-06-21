@@ -10,7 +10,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Routing\Requirement\Requirement;
 
 class AnnonceController extends AbstractController
 {
@@ -18,7 +17,7 @@ class AnnonceController extends AbstractController
     public function liste(AnnonceRepository $annonceRepository, Request $request): Response
     {
         $filtre = new FiltreAnnonce();
-        $form = $this->createForm(FiltreAnnonceType::class,$filtre);
+        $form = $this->createForm(FiltreAnnonceType::class, $filtre);
         $form->handleRequest($request);
         $annonces = $annonceRepository->filtreAnnonce($filtre);
         // dd($annonces);
@@ -34,9 +33,9 @@ class AnnonceController extends AbstractController
         if (is_null($annonce)) {
             throw $this->createNotFoundException();
         }
+
         return $this->render('annonce/show.html.twig', [
             'annonce' => $annonce,
         ]);
     }
-
 }
