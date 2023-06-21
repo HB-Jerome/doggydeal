@@ -70,7 +70,7 @@ public function annonceListSPA()
         ->leftJoin('annonceur.annonces', 'annonce')
         ->groupBy('annonceur')
         ->orderBy('annonce.modifiedAt', 'DESC')
-        ->getQuery()
-        ->getResult();
+        ->getQuery();
+        // ->getResult();
 }
 }
