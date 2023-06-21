@@ -61,7 +61,7 @@ class AppFixtures extends Fixture
             $adoptant
                 ->setFirstName($firstName)
                 ->setLastName($lastName);
-            $adoptant->setPassword(
+            $adoptant->setPassword( 
                 $this->hasher->hashPassword(
                     $adoptant,
                     'mdp'.$i
