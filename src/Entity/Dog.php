@@ -225,5 +225,9 @@ class Dog
         $this->isLof = $isLof;
 
         return $this;
+
+    }
+    public function __toString(){
+        return $this->getName();
     }
 }
