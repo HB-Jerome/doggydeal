@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\AdoptionOfferRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -16,12 +17,12 @@ class AdoptionOffer
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    private ?DateTimeImmutable $createdAt = null;
 
     #[ORM\Column]
-    private ?bool $isAccepted = null;
+    private bool $isAccepted = false;
 
-    #[ORM\ManyToOne(inversedBy: 'adoptionOffers')]
+    #[ORM\ManyToOne(inversedBy: 'adoptionOffers', targetEntity: Annonce::class)]
     #[ORM\JoinColumn(nullable: false)]
     private ?Annonce $annonce = null;
 
@@ -36,7 +37,7 @@ class AdoptionOffer
     private ?Adoptant $adoptant = null;
 
     public function __construct()
-    {
+    {   $this->createdAt= new DateTimeImmutable;
         $this->dogs = new ArrayCollection();
         $this->messages = new ArrayCollection();
     }
@@ -46,12 +47,12 @@ class AdoptionOffer
         return $this->id;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?DateTimeImmutable
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    public function setCreatedAt(DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
 
