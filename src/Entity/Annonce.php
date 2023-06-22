@@ -69,7 +69,6 @@ class Annonce
     public function setCreatedAt(\DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
-
         return $this;
     }
 
@@ -179,4 +178,9 @@ class Annonce
 
         return true;
     }
+    public function __toString(){
+        return $this->getTitle();
+    }
 }
+
+

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\AdoptionOfferRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -16,27 +17,27 @@ class AdoptionOffer
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $CreatedAt = null;
+    private ?DateTimeImmutable $createdAt = null;
 
     #[ORM\Column]
-    private ?bool $isAccepted = null;
+    private bool $isAccepted = false;
 
-    #[ORM\ManyToOne(inversedBy: 'adoptionOffers')]
+    #[ORM\ManyToOne(inversedBy: 'adoptionOffers', targetEntity: Annonce::class)]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Annonce $Annonce = null;
+    private ?Annonce $annonce = null;
 
-    #[ORM\ManyToMany(targetEntity: Dog::class, inversedBy: 'adoptionOffers')]
+    #[ORM\ManyToMany(targetEntity: Dog::class, inversedBy: 'adoptionOffers', cascade:['persist'])]
     private Collection $dogs;
 
-    #[ORM\OneToMany(mappedBy: 'AdoptionOffer', targetEntity: Message::class)]
+    #[ORM\OneToMany(mappedBy: 'AdoptionOffer', targetEntity: Message::class, cascade:['persist'])]
     private Collection $messages;
 
-    #[ORM\ManyToOne(inversedBy: 'adoptionOffers')]
+    #[ORM\ManyToOne(inversedBy: 'adoptionOffers', cascade:['persist'] )]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Adoptant $adoptants = null;
+    private ?Adoptant $adoptant = null;
 
     public function __construct()
-    {
+    {   $this->createdAt= new DateTimeImmutable;
         $this->dogs = new ArrayCollection();
         $this->messages = new ArrayCollection();
     }
@@ -46,14 +47,14 @@ class AdoptionOffer
         return $this->id;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?DateTimeImmutable
     {
-        return $this->CreatedAt;
+        return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $CreatedAt): self
+    public function setCreatedAt(DateTimeImmutable $createdAt): self
     {
-        $this->CreatedAt = $CreatedAt;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
@@ -72,12 +73,12 @@ class AdoptionOffer
 
     public function getAnnonce(): ?Annonce
     {
-        return $this->Annonce;
+        return $this->annonce;
     }
 
-    public function setAnnonce(?Annonce $Annonce): self
+    public function setAnnonce(?Annonce $annonce): self
     {
-        $this->Annonce = $Annonce;
+        $this->annonce = $annonce;
 
         return $this;
     }
@@ -136,14 +137,14 @@ class AdoptionOffer
         return $this;
     }
 
-    public function getAdoptants(): ?Adoptant
+    public function getAdoptant(): ?Adoptant
     {
-        return $this->adoptants;
+        return $this->adoptant;
     }
 
-    public function setAdoptants(?Adoptant $adoptants): self
+    public function setAdoptant(?Adoptant $adoptant): self
     {
-        $this->adoptants = $adoptants;
+        $this->adoptant = $adoptant;
 
         return $this;
     }
