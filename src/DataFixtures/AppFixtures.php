@@ -53,15 +53,14 @@ class AppFixtures extends Fixture
             $firstName = $fullname[0];
             $lastName = $fullname[1];
             $adoptant
-                ->setUsername($userData['username'])
-                ->setEmail($userData['email'])
-                ->setCity($userData['address']['city'])
-                ->setPhone($userData['phone'])
-                ->setZipCode($userData['address']['zipcode']);
-            $adoptant
+                ->setUsername($userData["username"])
+                ->setEmail($userData["email"])
+                ->setCity($userData["address"]["city"])
+                ->setPhone($userData["phone"])
+                ->setZipCode($userData["address"]["zipcode"])
                 ->setFirstName($firstName)
                 ->setLastName($lastName);
-            $adoptant->setPassword( 
+            $adoptant->setPassword(
                 $this->hasher->hashPassword(
                     $adoptant,
                     'mdp'.$i
