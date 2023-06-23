@@ -17,11 +17,30 @@
 	<div class="container">
 		<h1 class="mf-2 my-4">Liste des annonces</h1>
 		{% for annonce in liste %}
-			{# {{ dump(annonce) }} #}
-			<a class="p-3" href="{{ path('annonce_show', {id: annonce.id}) }}">
-				<p>Titre:
-					{{ annonce.title }}</p>
-			</a>
+			<hr class="mx-auto w-80">
+			{% for dog in annonce.dogs %}
+				<div class="d-flex p-2 gap-2 justify-content-center align-items-center">
+					{% for image in dog.images %}
+						<img src="{{ asset(image.path) }}" alt="...">
+					{% endfor %}
+				</div>
+			{% endfor %}
+			<div class="card-body">
+				<h1 class="card-title">{{annonce.title}}</h1>
+				<p class="card-text">{{annonce.modifiedAt| date('d/m/Y H:i')}}</p>
+				{% for dog in annonce.dogs %}
+					<h2>{{dog.name}}</h2>
+					{% for race in dog.races %}
+						<h1>{{race.name}}</h1>
+					{% endfor %}
+					{% if dog.isAdopted == false %}
+						<p>Pas encore adopté</p>
+					{% else %}
+						<p>Adopté</p>
+					{% endif %}
+				{% endfor %}
+				<a href="#" class="btn btn-primary">Voir l'annonce</a>
+			</div>
 		{% endfor %}
 	</div>
 {% endblock %}

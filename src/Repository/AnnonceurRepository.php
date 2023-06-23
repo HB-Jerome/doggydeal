@@ -68,7 +68,6 @@ class AnnonceurRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('annonceur')
             ->leftJoin('annonceur.annonces', 'annonce')
-            ->groupBy('annonceur')
             ->orderBy('annonce.modifiedAt', 'DESC')
             ->getQuery()
             ->getResult();
