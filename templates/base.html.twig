@@ -26,9 +26,17 @@
 		<nav class="navbar navbar-light justify-content-between mx-4">
 			<a href="{{path('app_default')}}" class="navbar-brand">DOGGY DEAL</a>
 			<div class="form-inline d-flex align-items-start gap-1">
-				<a href="{{path('app_annonce')}}" class="navbar-brand">Liste des annonces</a>
-				<a class="btn btn-outline-success  my-sm-0" href="{{path('app_login')}}">Login</a>
-				<a class="btn btn-outline-success  my-sm-0" href="{{path('app_register')}}">Inscription</a>
+			<a href="{{path('app_annonce')}}" class="navbar-brand">Liste des annonces</a>
+				{% if app.user %}
+					<div class="mb-3">
+						{{ app.user.userIdentifier }}
+						<a class="btn btn-outline-success  my-sm-0" href="{{ path('app_logout') }}">Se déconnecter</a>
+					</div>
+				{% endif %}
+				{% if app.user == null %}
+					<a class="btn btn-outline-success type=" hidden"  my-sm-0" href="{{path('app_login')}}">Login</a>
+					<a class="btn btn-outline-success  my-sm-0" href="{{path('app_register')}}">Inscription</a>
+				{% endif %}
 			</div>
 		</nav>
 		{% block body %}{% endblock %}
