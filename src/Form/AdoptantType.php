@@ -16,6 +16,7 @@ class AdoptantType extends AbstractType
         $builder
             ->add('email', EmailType::class, [
                 'label' => 'Adresse e-mail',
+                'invalid_message' => 'L\'adresse e-mail saisie est invalide.',
             ])
             ->add('city')
             ->add('phone')
