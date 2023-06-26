@@ -4,7 +4,6 @@
 {% endblock %}
 
 {% block body %}
-	{# {{ dump() }} #}
 
 	{# <h1>{{ annonce.title }}</h1>
 																{{ annonce.createdAt|date('d/m/Y H:i') }}
@@ -38,7 +37,6 @@
 			{{ annonce.createdAt|date('d/m/Y H:i') }}
 		</p>
 		<p class="card-text">
-		{{dump(annonce.getId)}}
 			<a href="{{ path('response_offer', {'id': annonce.getId }) }}" class="btn btn-primary">Adopter</a>
 		</p>
 	</div>
