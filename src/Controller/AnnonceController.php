@@ -27,7 +27,6 @@ class AnnonceController extends AbstractController
         $form = $this->createForm(FiltreAnnonceType::class, $filtre);
         $form->handleRequest($request);
         $annonces = $annonceRepository->filtreAnnonce($filtre);
-        // dd($annonces);
         return $this->render('annonce/index.html.twig', [
             'liste' => $annonces,
             'form' => $form->createView(),
@@ -51,7 +50,7 @@ class AnnonceController extends AbstractController
     public function new(Request $request, AdoptionOfferRepository $adoptionOfferRepository, Annonce $annonce): Response
     {
         
-        $adoptionOffer = new AdoptionOffer;
+        $adoptionOffer = new AdoptionOffer();
         $adoptant = $this->getUser();
         $adoptionOffer->setAdoptant($adoptant);
 
@@ -61,11 +60,9 @@ class AnnonceController extends AbstractController
         $message->setIsFromAdoptant(true);
         
 
-        // dd($annonce->getId());
         $form = $this->createForm(AdoptionOfferType::class, $adoptionOffer,[
             'id' => $annonce->getId()
         ]);
-// dd($annonce);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
