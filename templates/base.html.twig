@@ -30,6 +30,7 @@
 				{% if app.user %}
 					<div class="mb-3">
 						{{ app.user.userIdentifier }}
+						<a class="btn btn-outline-success  my-sm-0" href="{{ path('app_logout') }}">Nouveau message</a>
 						<a class="btn btn-outline-success  my-sm-0" href="{{ path('app_logout') }}">Se déconnecter</a>
 					</div>
 				{% endif %}
