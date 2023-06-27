@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des annonces{% endblock %}
+{% block title %}Liste de mes annonces{% endblock %}
 
 {% block body %}
+<h2>Liste de mes annonces</h2>
+<h2>Créer une annonce</h2>
 
 {% for annonce in annonces %}
 <p>Title:{{annonce.name}}</p>
