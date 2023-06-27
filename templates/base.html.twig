@@ -26,14 +26,14 @@
 		<nav class="navbar navbar-light justify-content-between mx-4">
 			<a href="{{path('app_default')}}" class="navbar-brand">DOGGY DEAL</a>
 			<div class="form-inline d-flex align-items-start gap-1">
-			<a href="{{path('app_annonce')}}" class="navbar-brand">Liste des annonces</a>
-				{% if app.user %}
+				<a href="{{path('app_annonce')}}" class="navbar-brand">Liste des annonces</a>
+				{% if is_granted('ROLE_USER') %}
 					<div class="mb-3">
-						{{ app.user.userIdentifier }}
+						{{ app.user.username }}
+						<a class="btn btn-outline-success  my-sm-0" href="{{ path('app_message') }}">Message</a>
 						<a class="btn btn-outline-success  my-sm-0" href="{{ path('app_logout') }}">Se déconnecter</a>
 					</div>
-				{% endif %}
-				{% if app.user == null %}
+				{% else %}
 					<a class="btn btn-outline-success type=" hidden"  my-sm-0" href="{{path('app_login')}}">Login</a>
 					<a class="btn btn-outline-success  my-sm-0" href="{{path('app_register')}}">Inscription</a>
 				{% endif %}
@@ -49,6 +49,4 @@
 			</div>
 		</div>
 	</body>
-</footer>
-<script src="{{ asset('js/bootstrap.js') }}" defer></script></body></html>
-</html>
+</html></footer><script src="{{ asset('js/bootstrap.js') }}" defer></script></body></html></html>
