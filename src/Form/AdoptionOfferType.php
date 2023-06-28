@@ -14,7 +14,6 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Collection;
-use _PHPStan_dcc7b7cff\Nette\Neon\Entity;
 
 class AdoptionOfferType extends AbstractType
 {

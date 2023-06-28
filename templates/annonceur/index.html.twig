@@ -1,12 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des annonces{% endblock %}
+{% block title %}Liste de mes annonces{% endblock %}
 
 {% block body %}
+<h2>Liste de mes annonces</h2>
 
 {% for annonce in annonces %}
-<p>Title:{{annonce.name}}</p>
+<p>Title:{{annonce.title}}</p>
 {# dump("annonce") #}
 {% endfor %}
 
+{# <h2>Créer une annonce</h2> #}
+<a href="{{ path('app_creation_annonce') }}" class="btn btn-lg btn-outline dark p-3 m-5">Créer une annonce</a>
 {% endblock body %}
+ 

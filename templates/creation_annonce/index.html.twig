@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'une annonce{% endblock %}
+
+{% block body %}
+
+
+
+
+<form method="post" class="jusfity-content-between mx-4">
+    <h1 class="h3 mb-3 font-weight-normal">Création d'une annonce</h1>
+    {# On affiche la balise <form> #}
+{{ form_start(form) }}
+    {# On affiche une "row" de notre formulaire, c'est à dire un bloc qui va contenir le label (balise label) et le widget (ici un champ input de type text) #}
+    {# On ajoute des attributs sur la div, sur le widget et sur le label #}
+    {{ form_row(form.title, {
+        row_attr: {
+            class: 'form-line',
+            "data-line": true
+        },
+        attr: {
+            class: 'form-widget',
+        },
+        label_attr: {
+            class: 'form-label',
+        },
+    }) }}
+    
+    {# On affiche une "row" de notre formulaire, c'est à dire un bloc qui va contenir le label (balise label) et le widget (ici un champ input de type text) #}
+    {{ form_row(form.isAvailable) }}
+
+    {# On affiche les éventuels champs qui n'aurait pas été affichés jusqu'ici #}
+    {{ form_rest(form) }}
+    {# On ajoute un bouton de validation du formulaire, nous n'en avons pas mis dans notre objet TagType #}
+    <button type="submit" class="btn btn-primary">Valider</button>
+{# On affiche la balise </form> et les éventuels champs qui n'aurait pas été affichés jusqu'ici #}
+{{ form_end(form) }}
+</form>  
+{% endblock %}
