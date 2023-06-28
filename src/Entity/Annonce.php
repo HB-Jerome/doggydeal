@@ -16,6 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
 #[ApiResource(
     operations: [
         new Get(),
+        new GetCollection(),
     ],
 )]
 class Annonce
@@ -187,9 +188,8 @@ class Annonce
 
         return true;
     }
-    public function __toString(){
+    public function __toString()
+    {
         return $this->getTitle();
     }
 }
-
-
