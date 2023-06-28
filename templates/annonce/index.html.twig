@@ -39,7 +39,7 @@
 						<p>Adopté</p>
 					{% endif %}
 				{% endfor %}
-				<a href="#" class="btn btn-primary">Voir l'annonce</a>
+				<a href="{{ path('annonce_show',{'id': annonce.getId}) }}" class="btn btn-primary">Voir l'annonce</a>
 			</div>
 		{% endfor %}
 	</div>
