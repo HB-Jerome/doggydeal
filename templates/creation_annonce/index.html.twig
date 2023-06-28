@@ -3,18 +3,37 @@
 {% block title %}Création d'une annonce{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/HB/Desktop/symfony/8.projet-chiens/doggydeal/src/Controller/CreationAnnonceController.php'|file_link(0) }}">src/Controller/CreationAnnonceController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/HB/Desktop/symfony/8.projet-chiens/doggydeal/templates/creation_annonce/index.html.twig'|file_link(0) }}">templates/creation_annonce/index.html.twig</a></code></li>
-    </ul>
-</div>
+
+
+<form method="post" class="jusfity-content-between mx-4">
+    <h1 class="h3 mb-3 font-weight-normal">Création d'une annonce</h1>
+    {# On affiche la balise <form> #}
+{{ form_start(form) }}
+    {# On affiche une "row" de notre formulaire, c'est à dire un bloc qui va contenir le label (balise label) et le widget (ici un champ input de type text) #}
+    {# On ajoute des attributs sur la div, sur le widget et sur le label #}
+    {{ form_row(form.title, {
+        row_attr: {
+            class: 'form-line',
+            "data-line": true
+        },
+        attr: {
+            class: 'form-widget',
+        },
+        label_attr: {
+            class: 'form-label',
+        },
+    }) }}
+    
+    {# On affiche une "row" de notre formulaire, c'est à dire un bloc qui va contenir le label (balise label) et le widget (ici un champ input de type text) #}
+    {{ form_row(form.isAvailable) }}
+
+    {# On affiche les éventuels champs qui n'aurait pas été affichés jusqu'ici #}
+    {{ form_rest(form) }}
+    {# On ajoute un bouton de validation du formulaire, nous n'en avons pas mis dans notre objet TagType #}
+    <button type="submit" class="btn btn-primary">Valider</button>
+{# On affiche la balise </form> et les éventuels champs qui n'aurait pas été affichés jusqu'ici #}
+{{ form_end(form) }}
+</form>  
 {% endblock %}

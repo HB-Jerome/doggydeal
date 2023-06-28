@@ -13,7 +13,7 @@ class CreationAnnonceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title',TextType::class,['label=>'title','required'=>true])
+            ->add('title',TextType::class,['label'=>'title','required'=>true])
             ->add('isAvailable')
         ;
     }
