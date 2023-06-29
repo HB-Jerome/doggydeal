@@ -4,19 +4,15 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container">
+	{{dump()}}
+	<div class="text-center my-5 gap-2 ">
+		<hr class="mx-auto w-80">
+		{% for offer in offers %}
+			<h1>{% for message in offer.messages %}
+				{{ message.content }}
+			{% endfor %}</h1>
+		<hr class="mx-auto w-80">
+		{% endfor %}
 
-    Incomplet !!!!!!!!! 
-		{# <form method="post" class="jusfity-content-between mx-4">
-			<h1 class="h3 mb-3 font-weight-normal">Msil box</h1>
-
-			{{ form_start(registrationForm) }}
-			{{ form_row( {
-            label: 'Votre message'
-            
-        }) }}
-			<button type="submit" class="btn btn-lg btn-primary">Envoyer</button>
-			{{ form_end(registrationForm) }}
-		</form> #}
 	</div>
 {% endblock %}
