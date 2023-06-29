@@ -20,8 +20,9 @@ class CreationAnnonceType extends AbstractType
                 [
                     'entry_type' => DogType::class,
                     'label' => 'dogs',
-                    'prototype_name' => 'dogs',
+                    'prototype_name' => '__dogs__',
                     'allow_add' => true,
+                    'allow_delete' => true,
                     'by_reference' => false,
                     'entry_options' => ['label' => false],
                 ]
