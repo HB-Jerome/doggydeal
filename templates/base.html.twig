@@ -30,6 +30,11 @@
 				{% if is_granted('ROLE_USER') %}
 					<div class="mb-3">
 						{{ app.user.username }}
+						{% if is_granted('ROLE_ANNONCEUR') %}
+						<a class="btn btn-outline-success  my-sm-0" href="{{ path('app_annonceur') }}">Mes annonces</a>
+						<a class="btn btn-outline-success  my-sm-0" href="{{ path('app_adoptant') }}">Mon Compte</a>
+						{% endif %}
+
 						{% if is_granted('ROLE_ADMIN') %}
 							<a class="btn btn-outline-success  my-sm-0" href="{{ path('admin') }}">Mon Espace Administrateur</a>
 						{% else %}

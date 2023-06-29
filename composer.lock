@@ -7169,17 +7169,6 @@
             "time": "2023-05-06T09:53:41+00:00"
         },
         {
-<<<<<<< HEAD
-            "name": "symfony/validator",
-            "version": "v6.3.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/validator.git",
-                "reference": "1b71f43c62ee867ab08195ba6039a1bc3e6654dc"
-            },
-            "dist": {
-                "type": "zip",
-=======
             "name": "symfony/uid",
             "version": "v6.3.0",
             "source": {
@@ -7263,7 +7252,6 @@
             },
             "dist": {
                 "type": "zip",
->>>>>>> 224bf8e (Easy Admin)
                 "url": "https://api.github.com/repos/symfony/validator/zipball/1b71f43c62ee867ab08195ba6039a1bc3e6654dc",
                 "reference": "1b71f43c62ee867ab08195ba6039a1bc3e6654dc",
                 "shasum": ""
