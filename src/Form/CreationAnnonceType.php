@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Annonce;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionTypeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,6 +15,17 @@ class CreationAnnonceType extends AbstractType
     {
         $builder
             ->add('title',TextType::class,['label'=>'title','required'=>true])
+            ->add(
+                'dog', CollectionType::class,
+                [
+                    'entry_type' => DogType::class,
+                    'label' => 'dogs',
+                    'prototype_name' => 'dogs',
+                    'allow_add' => true,
+                    'by_reference' => false,
+                    'entry_options' => ['label' => false],
+                ]
+            )
             ->add('isAvailable')
         ;
     }
