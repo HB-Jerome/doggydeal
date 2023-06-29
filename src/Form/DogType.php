@@ -3,8 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Dog;
+use App\Entity\Race;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,7 +21,15 @@ class DogType extends AbstractType
             ->add('isAdopted')
             ->add('acceptAnimmals')
             ->add('isLof')
-            ->add('races')
+            ->add(
+                'races', EntityType::class,
+                [
+                    'choice_label' => 'name',
+                    'class' => Race::class,
+                    'multiple' => true,
+                    'expanded' => true,
+                ]
+            )
             // ->add(
             //     'image', CollectionType::class,
             //     [
