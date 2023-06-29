@@ -30,11 +30,14 @@
 				{% if is_granted('ROLE_USER') %}
 					<div class="mb-3">
 						{{ app.user.username }}
-						{% if is_granted('ROLE_ANNONCEUR') %}
-								<a class="btn btn-outline-success  my-sm-0" href="{{ path('app_annonceur') }}">Mes annonces</a>
+						{% if is_granted('ROLE_ADMIN') %}
+							<a class="btn btn-outline-success  my-sm-0" href="{{ path('admin') }}">Mon Espace Administrateur</a>
+						{% else %}
+							<a class="btn btn-outline-success  my-sm-0" href="{{ path('app_message') }}">Message</a>
 						{% endif %}
-						<a class="btn btn-outline-success  my-sm-0" href="{{ path('app_message') }}">Message</a>
-						<a class="btn btn-outline-success  my-sm-0" href="{{ path('app_adoptant') }}">Mon Compte</a>
+						{% if is_granted('ROLE_ADOPTANT') %}
+							<a class="btn btn-outline-success  my-sm-0" href="{{ path('app_adoptant') }}">Mon Compte</a>
+						{% endif %}
 						<a class="btn btn-outline-success  my-sm-0" href="{{ path('app_logout') }}">Se déconnecter</a>
 
 					</div>
