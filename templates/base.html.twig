@@ -37,10 +37,10 @@
 
 						{% if is_granted('ROLE_ADMIN') %}
 							<a class="btn btn-outline-success  my-sm-0" href="{{ path('admin') }}">Mon Espace Administrateur</a>
-						{% else %}
-							<a class="btn btn-outline-success  my-sm-0" href="{{ path('app_message') }}">Message</a>
+							{% else %}
 						{% endif %}
 						{% if is_granted('ROLE_ADOPTANT') %}
+							<a class="btn btn-outline-success  my-sm-0" href="{{ path('app_message') }}">Message</a>
 							<a class="btn btn-outline-success  my-sm-0" href="{{ path('app_adoptant') }}">Mon Compte</a>
 						{% endif %}
 						<a class="btn btn-outline-success  my-sm-0" href="{{ path('app_logout') }}">Se déconnecter</a>
