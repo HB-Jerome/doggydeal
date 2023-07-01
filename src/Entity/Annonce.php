@@ -30,10 +30,10 @@ class Annonce
     private ?string $title = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    private ?\DateTimeImmutable $createdAt;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $modifiedAt = null;
+    private ?\DateTimeInterface $modifiedAt;
 
     #[ORM\Column]
     private ?bool $isAvailable = null;
@@ -50,6 +50,8 @@ class Annonce
 
     public function __construct()
     {
+        $this->createdAt= new \DateTimeImmutable;
+        $this->modifiedAt= new \DateTimeImmutable;
         $this->dogs = new ArrayCollection();
         $this->adoptionOffers = new ArrayCollection();
     }
